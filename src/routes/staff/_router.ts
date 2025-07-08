@@ -7,6 +7,7 @@ import { createInitialAdminHandler } from "./create-initial-admin";
 import { staffLoginHandler, staffLoginHandlerBodySchema } from "./login";
 import { staffLogoutHandler } from "./logout";
 import { staffRefreshAuthHandler } from "./refresh-auth";
+import { kitchenManagerRouter } from "./kitchen-manager/_router";
 
 export const staffRouter = Router();
 
@@ -23,4 +24,10 @@ staffRouter.use(
   "/admin",
   staffAuthRequiredMiddleware(StaffRole.Admin),
   adminRouter
+);
+
+staffRouter.use(
+  "/kitchen-manager",
+  staffAuthRequiredMiddleware(StaffRole.KitchenManager),
+  kitchenManagerRouter
 );

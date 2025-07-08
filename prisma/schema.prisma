@@ -53,3 +53,11 @@ model Customer {
 
     createdAt DateTime @default(now())
 }
+
+model Order {
+    id Int @id @default(autoincrement())
+
+    orderCode String
+
+    createdAt DateTime @default(now())
+}
